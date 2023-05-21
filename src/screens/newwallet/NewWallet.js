@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Button,
@@ -16,7 +16,7 @@ import doApiCall, { AXIOS_METHOD } from "../../hooks/useApi";
 
 function NewWallet() {
   const navigate = useNavigate();
-
+  const [internet, setInternet] = useState(false);
   return (
     <>
       <Card>
