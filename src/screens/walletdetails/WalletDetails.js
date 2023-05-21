@@ -141,9 +141,6 @@ function WalletDetails() {
     <React.Fragment>
       <br />
       <br />
-      <br />
-      <br />
-      <br />
       <Box my={4}>
         <Grid container spacing={2}>
           <Grid item xs={12} lg={6}>

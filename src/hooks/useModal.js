@@ -1,7 +1,5 @@
 import React, { useCallback, useContext, useState } from "react";
 
-
-
 import LoginModal from "../modals/LoginModal";
 import RegModal from "../modals/Reg/RegModal";
 import ConfirmModal from "../modals/ComfirmModal";
@@ -11,11 +9,11 @@ const ModalContext = React.createContext();
 ModalContext.displayName = "ModalContext";
 
 export const MODALS = {
-  'NONE': 'NONE',
-  'CONFIRM': 'CONFIRM',
-  'LOGIN': 'LOGIN',
-  'REG': 'REG',
-  'ERROR': 'ERROR'
+  NONE: "NONE",
+  CONFIRM: "CONFIRM",
+  LOGIN: "LOGIN",
+  REG: "REG",
+  ERROR: "ERROR",
 };
 
 export function Modals() {
@@ -30,8 +28,9 @@ export function Modals() {
             return <RegModal onClose={onClose} {...context.modalProps} />;
           case MODALS.CONFIRM:
             return <ConfirmModal onClose={onClose} {...context.modalProps} />;
-          case MODALS.ERROR:
-            return <Page404 onClose={onClose} {...context.modalProps} />;
+          // ha nem commentelem ki, akkor minden page alján megjelenik.
+          //case MODALS.ERROR:
+          //  return <Page404 onClose={onClose} {...context.modalProps} />;
           case MODALS.NONE:
           default:
             return null;

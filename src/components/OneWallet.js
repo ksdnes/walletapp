@@ -15,35 +15,37 @@ import { WalletContext } from "../hooks/useWallet";
 //  **DESCRIPTION**
 //The OneWallet component is responsible for rendering the details of a Wallet.
 //It has been separated into its own component for reusability purposes
-function OneWallet({walletid,name,description}) {
+function OneWallet({ walletid, name, description }) {
   const navigate = useNavigate();
-  const {showModal}=useModals();
+  const { showModal } = useModals();
 
   const { fetchWalletDetails } = useContext(WalletContext);
 
-  const deleteWalletHandler=()=>{
-
+  const deleteWalletHandler = (id) => {
     const requestData = {
-      id: walletid,
+      id: id,
     };
 
-    showModal(MODALS.CONFIRM,{
-      message:"Are you sure you want to delete this wallet",
-      onConfirmed:()=>{
-        doApiCall(AXIOS_METHOD.DELETE,`/wallet/${walletid}`,
-        (_unusedDeletedItem)=>{
-          fetchWalletDetails(walletid);
-        }, (message) => {
-          showModal(MODALS.ERROR, { message });
-          console.log(walletid)
-        },
-        {requestData}
-      );
-    },
-  });
-}
+    //now working. Why?
+    showModal(MODALS.CONFIRM, {
+      message: "Are you sure you want to delete this wallet",
+      onConfirmed: () => {
+        doApiCall(
+          AXIOS_METHOD.DELETE,
+          `/wallet/${id}`,
+          (_unusedDeletedItem) => {
+            fetchWalletDetails(id);
+          },
+          (message) => {
+            showModal(MODALS.ERROR, { message });
+            console.log(id);
+          },
+          requestData
+        );
+      },
+    });
+  };
 
-       
   return (
     <React.Fragment>
       <br />
@@ -77,9 +79,9 @@ function OneWallet({walletid,name,description}) {
                   variant={"contained"}
                   color={"error"}
                   fullWidth
-                  onClick={deleteWalletHandler}
+                  onClick={() => deleteWalletHandler(walletid)}
                 >
-                  Delete Wallet
+                  Delete
                 </Button>
               </CardActions>
             </Grid>
