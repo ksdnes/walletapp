@@ -1,0 +1,20 @@
+wallet
+PUT/wallet -->  hozzáadás
+    {
+        "name": "string",
+        "description": "string",
+        "extra": {}
+    }
+
+
+PUT/wallet -->  hozzáadás
+    {
+        "name": "string",
+        "description": "string",
+        "extra": {}
+    }
+
+GET/wallet/{id}  --> lekérdezés id alapján
+{
+    
+}
